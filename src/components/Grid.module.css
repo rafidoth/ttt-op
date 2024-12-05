@@ -1,0 +1,35 @@
+.gridRow{
+  display : inline-block;
+}
+
+
+.grid{
+  display: flex;
+  flex-flow: column;
+  width: 170px;
+  background-color: #121212;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+  padding-top : 3px;
+  padding-bottom : 3px;
+}
+.gridDark{
+  background-color: #3D3D3D;
+}
+
+
+.borderX{
+  border : 2px solid#BA0021;
+}
+
+.borderO{
+  border : 2px solid#fdd017;
+}
+
+.borderE{
+  border : 2px solid #4D5D53;
+}
+
+
+

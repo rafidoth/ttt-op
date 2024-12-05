@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState , useContext} from "react";
 import Square from "./Square";
+import calculateWinner from "../GameLogic/CalculateWinner";
+import styles from "./Grid.module.css" 
+import { darkModeContext } from "../App";
 
 interface Props{
   updateWinner : (winner : string) => void,
@@ -7,46 +10,6 @@ interface Props{
   updateTurn : ()=> void
 }
 
-const getWinner = function (line : string){
-    if(line === "XXX") return "X";
-    else if (line === "OOO") return "O";
-    else return "N";
-};
-
-
-const calculateWinner = function(grid : string[][]):string{
-  let winner: string = "N";
-  // row check
-  for(let i =0; i < 3; i++){
-    let line = "";
-    for(let j = 0; j<3; j++){
-      line+= grid[i][j];
-    }
-    winner = getWinner(line);
-    if(winner!=="N") return winner;
-  }
-
-  // column check
-  for(let i =0; i < 3; i++){
-    let line = "";
-    for(let j = 0; j<3; j++){
-      line+= grid[j][i];
-    }
-    winner = getWinner(line);
-    if(winner!=="N") return winner;
-  }
-
-  // diagonal check
-  let diag1 = grid[0][0]+ grid[1][1]+ grid[2][2];
-  winner = getWinner(diag1)
-  if(winner!=="N") return winner;
-
-  let diag2 = grid[0][2] + grid[1][1] + grid[2][0];
-  winner = getWinner(diag2)
-  if(winner!=="N") return winner;
-  
-  return "Not Decided Yet";
-}
 
 
 export default function Grid({updateWinner, xTurn, updateTurn}: Props){
@@ -57,6 +20,7 @@ export default function Grid({updateWinner, xTurn, updateTurn}: Props){
   ]);
 
   const [gameEnd, setGameEnd] = useState(false);
+  const { isDark } = useContext(darkModeContext)
 
   let handleClick = function handleClick(row: number, col:number){
     let prevGridState = gridState.map(row=> [...row]);
@@ -89,16 +53,28 @@ export default function Grid({updateWinner, xTurn, updateTurn}: Props){
           key ={row.toString() + col.toString()} 
           status={gridState[row][col]}
           onSquareClick = {()=> handleClick(row,col)}
-          disableAtGameEnd = {gameEnd}
+          isGameEnded = {gameEnd}
         />)
     }
     grid.push(
-      <div key = {row}>{gridRow}</div>
+      <div className={styles.gridRow} key = {row}>{gridRow}</div>
     )
   }
+
+  
+  let classNames = [styles.grid];
+  if(isDark) classNames.push(styles.gridDark)
+
+  if(xTurn && !gameEnd) classNames.push(styles.borderX);
+  else if(!xTurn && !gameEnd) classNames.push(styles.borderO)
+  else if(gameEnd) classNames.push(styles.borderE)
+
+  
   return (
     <>
-      {grid}       
+      <div className={classNames.join(' ')}>
+        {grid}       
+      </div>
     </>
   )
 }

@@ -3,13 +3,20 @@ button[disabled]{
   color: #000000;
 }
 
+.squareDark{
+  background-color: #121212; 
+}
 
-.bgRed{
+.bgX{
   background-color: #BA0021;
 }
 
-.bgGreen{
-  background-color: #00FF40;
+.bgO{
+  background-color: #fdd017;
+}
+
+.bgGray{
+  background-color: #4D5D53;
 }
 
 .square{
@@ -20,4 +27,5 @@ button[disabled]{
   outline : none;
   border : none;
 }
+
 
