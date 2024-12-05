@@ -9,7 +9,7 @@ interface Props{
 
 const Container = ({children}: Props) => {
   let classNames = [styles.container]
-  const isDark = useContext(darkModeContext) 
+  const {isDark} = useContext(darkModeContext) 
   if(isDark) classNames.push(styles.bgDark)
   return (
     <div 

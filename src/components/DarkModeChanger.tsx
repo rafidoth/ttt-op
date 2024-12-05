@@ -1,5 +1,5 @@
-import darkmodeIcon from '../assets/darkmode.svg'
-import lightmodeIcon from '../assets/lightmode.svg'
+import sun from'../assets/sun.svg'
+import moon from '../assets/moon.svg'
 import { darkModeContext } from '../App'
 import { useContext } from 'react'
 
@@ -8,16 +8,32 @@ const btnStyle= {
   outline : "none",
   width : 30,
   height : 30,
-  borderRadius : "50%"
+  borderRadius : "50%",
+  backgroundColor :"transparent" 
 }
 
 
 export default function DarkModeChanger(){
-  const dark =  useContext(darkModeContext)
+  const {isDark, setIsDark} =  useContext(darkModeContext)
+  const handleOnClick = () => setIsDark((prev)=>!prev) 
+  if(isDark){
+    return(<>
+      <button 
+        style={btnStyle}
+        onClick = {handleOnClick}
+      >
+        <img src={sun} width={20} />                
+      </button>  
+    </>)
+  }else{
+    return(<>
+      <button 
+        style={btnStyle}
+        onClick = {handleOnClick}
+      >
+        <img src={moon} width={20} />                
+      </button>  
+    </>)
+  }
 
-  return(<>
-    <button style={btnStyle}>
-      <img src={darkmodeIcon} width={20} />                
-    </button>  
-  </>)
 }
