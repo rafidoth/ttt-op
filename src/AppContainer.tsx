@@ -1,31 +1,24 @@
 import { useState } from 'react'
-import Grid from './components/Grid'
 import Result from './components/Result'
 import Container from './components/Container'
 import DarkModeChanger from './components/DarkModeChanger'
+import SingleGridContainer from './components/SingleGridContainer'
 
 
 export default function AppContainer(){
-  const [xTurn, setXTurn] = useState(true);
   const [winner, setWinner] = useState("Not Decided Yet");
-  const handleWinner = function(winner : string){
-    setWinner(winner);
-  }
+  const handleWinner = (winner : string) =>{setWinner(winner)}
   return (
     <>
     <Container>
       <div>
         <DarkModeChanger/> 
       </div>
+      <SingleGridContainer handleWinner={handleWinner}/> 
       <div >
-        <Grid 
-          updateWinner = {handleWinner} 
-          xTurn = {xTurn} 
-          updateTurn = {()=>setXTurn(!xTurn)}    
-        />
         <Result 
           winningStatus={winner} 
-          currentPlayer={xTurn? "X": "O"}
+          currentPlayer={"X"}
         />
       </div>
     </Container>
