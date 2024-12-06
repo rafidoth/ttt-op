@@ -3,20 +3,24 @@ import React, { MouseEvent } from "react";
 import styles from './SingleGridContainer.module.css'
 
 interface Prop{
-  handleWinner : (winner : string )=> void
+  handleWinner : (winner : string )=> void,
+  position : {
+    x : number,
+    y : number
+  }
+
 }
 
 
-export default function SingleGridContainer({handleWinner}:Prop){
+export default function SingleGridContainer({handleWinner , position}:Prop){
   const [xTurn, setXTurn] = React.useState(true);
-  const [currPos, setCurrPos] = React.useState({x : 140, y : 90})
-  const draggedNode = React.useRef(null);
+  const [currPos, setCurrPos] = React.useState(position);
+  const draggedNode = React.useRef();
 
   const cssTopleft = {
     left: [currPos.x.toString(),"px"].join(''),
     top : [currPos.y.toString(),"px"].join('')
   }
-  console.log(cssTopleft)
   
   const handleDragStart = ()=>{
     draggedNode.current.addEventListener('dragend', handleDragEnd)

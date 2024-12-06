@@ -2,16 +2,7 @@ import sun from'../assets/sun.svg'
 import moon from '../assets/moon.svg'
 import { darkModeContext } from '../App'
 import { useContext } from 'react'
-
-const btnStyle= {
-  border : "none",
-  outline : "none",
-  width : 30,
-  height : 30,
-  borderRadius : "50%",
-  backgroundColor :"transparent" 
-}
-
+import { btnStyle } from './btnStyle'
 
 export default function DarkModeChanger(){
   const {isDark, setIsDark} =  useContext(darkModeContext)
