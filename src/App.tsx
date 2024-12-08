@@ -13,7 +13,7 @@ const defaultDarkModeState = {
   setIsDark : () =>{}
 } as DarkModeContext;
 
-export const darkModeContext =  React.createContext(defaultDarkModeState);
+export const darkModeContext = React.createContext(defaultDarkModeState);
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
   return (<darkModeContext.Provider value={{isDark, setIsDark}}>
     <AppContainer/> 
   </darkModeContext.Provider>)
+
 }
 
 export default App

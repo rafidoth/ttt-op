@@ -4,6 +4,7 @@ import { darkModeContext } from '../App'
 import { useContext } from 'react'
 import { btnStyle } from './btnStyle'
 
+
 export default function DarkModeChanger(){
   const {isDark, setIsDark} =  useContext(darkModeContext)
   const handleOnClick = () => setIsDark((prev)=>!prev) 
