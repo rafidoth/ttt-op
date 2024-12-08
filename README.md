@@ -48,3 +48,24 @@ export default tseslint.config({
   },
 })
 ```
+
+
+
+## Todos
+- Tic Tac Toe Single Board Component (Minimal Structure)✅ 
+- UI Upgradation✅ 
+- Dark Mode UI✅  
+- Add new game board (As much as I want)✅ 
+- Clear All (remove all the boards from the screen)✅ 
+- Infinite Canvas 
+- Prevent New board Overlapping 
+- Two Player Online(realtime networking implementation)
+- One player can Invite Other one
+- A developed Game logic design
+- Chart/Graph to present the overall game result 
+
+
+
+
+
+
